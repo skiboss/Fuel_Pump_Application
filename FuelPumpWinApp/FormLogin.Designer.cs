@@ -57,8 +57,8 @@ namespace FuelPumpWinApp
             this.textBoxPassword.Location = new System.Drawing.Point(128, 137);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(285, 29);
-            this.textBoxPassword.TabIndex = 7;
-            this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxPassword.TabIndex = 2;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // textBoxUsername
             // 
@@ -66,8 +66,7 @@ namespace FuelPumpWinApp
             this.textBoxUsername.Location = new System.Drawing.Point(128, 91);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(285, 29);
-            this.textBoxUsername.TabIndex = 8;
-            this.textBoxUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxUsername.TabIndex = 1;
             // 
             // label3
             // 
@@ -97,9 +96,10 @@ namespace FuelPumpWinApp
             this.buttonCancel.Location = new System.Drawing.Point(284, 183);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(129, 45);
-            this.buttonCancel.TabIndex = 9;
+            this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonLogin
             // 
@@ -109,15 +109,18 @@ namespace FuelPumpWinApp
             this.buttonLogin.Location = new System.Drawing.Point(128, 183);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(150, 45);
-            this.buttonLogin.TabIndex = 10;
+            this.buttonLogin.TabIndex = 3;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // FormLogin
             // 
+            this.AcceptButton = this.buttonLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(425, 248);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonLogin);
