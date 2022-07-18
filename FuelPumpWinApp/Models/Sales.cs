@@ -5,6 +5,7 @@ using System.Text;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using FuelPumpWinApp.Models;
 
 namespace FuelPumpWinApp.Models
 {
@@ -81,6 +82,7 @@ namespace FuelPumpWinApp.Models
             }
             return  list;
         }
+        
     }
 }
  
