@@ -31,11 +31,22 @@ namespace FuelPumpWinApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (FormLogin.user.Username != "Admin")
+            {
+                linkLabelUser.Visible = false;
+            }
+
             RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\FuelPumpSettings");
             if(key != null)
             {
                 PriceInput = Convert.ToDecimal(key.GetValue("Price"));
-                SalesCount = Convert.ToInt32(key.GetValue("SalesCount")); 
+                DateTime SalesDate = Convert.ToDateTime(key.GetValue("SalesDate"));
+                SalesCount = Convert.ToInt32(key.GetValue("SalesCount"));
+                if (SalesDate != Convert.ToDateTime(DateTime.UtcNow.ToShortDateString()))
+                {
+                    SalesCount = 1;
+                }
+                //SalesCount = Convert.ToInt32(key.GetValue("SalesCount")); 
             }
             key.Close();
             textBoxPrice.Text = PriceInput.ToString("N2");
@@ -94,6 +105,16 @@ namespace FuelPumpWinApp
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
+            if (sales == 0)
+            {
+                textBoxSales.Text = "0";
+                textBoxLitre.Text = "0";
+                SalesInput = 0;
+                LitresInput = 0;
+                return;
+            }
+            timer1.Enabled = false;
+
             Sales newSale = new Sales();
             newSale.Date = DateTime.UtcNow.AddHours(1);
             newSale.SalesId = DateTime.UtcNow.AddHours(1).ToString("yy/MM/dd/") + SalesCount;
@@ -110,10 +131,14 @@ namespace FuelPumpWinApp
                 textBoxLitre.Text = "0";
                 SalesInput = 0;
                 LitresInput = 0;
+                sales = 0;
+                litre = 0;
+                //TargetPrice = 0;
 
-                //To enable salesId continuation without the primary key conflict
+                // To enable salesId continuation without the primary key conflict
                 RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\FuelPumpSettings");
                 key.SetValue("SalesCount", SalesCount);
+                key.SetValue("SalesDate", DateTime.UtcNow.ToShortDateString());
                 key.Close();
             }
             else
@@ -126,6 +151,12 @@ namespace FuelPumpWinApp
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FormSalesView form = new FormSalesView();
+            form.ShowDialog();
+        }
+
+        private void linkLabelUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormManageUser form = new FormManageUser();
             form.ShowDialog();
         }
     }

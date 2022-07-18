@@ -44,6 +44,7 @@ namespace FuelPumpWinApp
             this.label5 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabelUser = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -197,12 +198,25 @@ namespace FuelPumpWinApp
             this.linkLabel1.Text = "Sales View";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // linkLabelUser
+            // 
+            this.linkLabelUser.AutoSize = true;
+            this.linkLabelUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelUser.Location = new System.Drawing.Point(29, 77);
+            this.linkLabelUser.Name = "linkLabelUser";
+            this.linkLabelUser.Size = new System.Drawing.Size(42, 21);
+            this.linkLabelUser.TabIndex = 7;
+            this.linkLabelUser.TabStop = true;
+            this.linkLabelUser.Text = "User";
+            this.linkLabelUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUser_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(348, 300);
+            this.Controls.Add(this.linkLabelUser);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxPrice);
@@ -241,6 +255,7 @@ namespace FuelPumpWinApp
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabelUser;
     }
 }
 
